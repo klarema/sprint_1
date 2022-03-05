@@ -76,4 +76,3 @@ let displayName = function () {
 };   
 displayName()
 
-// edit to check git clone works
