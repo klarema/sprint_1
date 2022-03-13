@@ -44,13 +44,13 @@ Teacher.prototype = Object.create(Person2.prototype);
 Teacher.prototype.constructor = Teacher;
 var teacher_1 = new Teacher;
 teacher_1.name = "John Ryan";
-teacher_1.subjects = ["History", "Geogrphy"];
+teacher_1.subjects = ["History", "Geography"];
 
 Assistant.prototype = Object.create(Teacher.prototype);
 Assistant.prototype.constructor = Assistant;
 var assistant_1 = new Assistant;
 assistant_1.name = "Tom Jones";
-assistant_1.subjects = ["Geogrphy"];
+assistant_1.subjects = ["Geography"];
 assistant_1.mentor = "John Ryan";
 
 function Student() {
