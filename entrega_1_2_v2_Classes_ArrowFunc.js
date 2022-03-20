@@ -53,7 +53,7 @@ class Botas extends Calzado {
     return "bajo"
   }
   style(){
-    return "formal or casual"
+    return "casual"
   }
 
 }
@@ -70,12 +70,12 @@ function createCalzado(objId, ObjectType){
   if(ObjectType === "zapato"){
     console.log("Create zapato, ID: "+ objId)
     var objId = new Zapato()
-    console.log("Tacon: " + objId.tacon() + ", Style: " + objId.style() + ", Material: " + objId.material())
+    console.log("Tacon: " + objId.tacon() + ", Style: " + objId.style() + ", " + objId.material())
   }
   else{
     console.log("Create botas, ID: "+ objId)
     var objId = new Botas()
-    console.log("Tacon: " + objId.tacon() + ", Style: " + objId.style() + ", Material: " + objId.material())
+    console.log("Tacon: " + objId.tacon() + ", Style: " + objId.style() + ", " + objId.material())
   }
 
 }
