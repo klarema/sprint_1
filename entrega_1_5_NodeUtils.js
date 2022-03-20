@@ -117,6 +117,7 @@ function encryptFile(encodedHexFile, encodedBase64File){
     console.error(err)
   }
 
+  // very bad, I know. TO DO - write a delete function
   fs.unlink(encodedHexFile, function(err) {
     if (err) {
       throw err
