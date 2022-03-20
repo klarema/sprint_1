@@ -4,7 +4,7 @@
   "description": "Node Testing project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Clare McCarron",
   "license": "ISC"
