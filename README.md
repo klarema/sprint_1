@@ -16,11 +16,11 @@ https://github.com/klarema/sprint_1/blob/main/entrega_1_5_NodeUtils.js
     4. the content of the file "encodedHexFile.txt" is encoded in Hexidecimal
     5. the content of the file "encodedBase64File.txt" is encoded in Base64
 3. To create 2 new encrypted files from the 2 encoded files and delete the 2 encoded files, use the ***encryptFile function*** 
-    1. this requires 2 parmeters: path to the file encoded in Hexidecimal, path to the file encoded in Base64
+    1. this requires 2 parameters: path to the file encoded in Hexidecimal, path to the file encoded in Base64
     2. Example use: encryptFile("./encodedHexFile.txt", "./encodedBase64File.txt")
     3. Expect: 2 new files created that are encrypted using the aes-192-cbc algorithm. The Hex and Base64 encoded files have been deleted
 4. To create new decoded and decrypted files from the encrypted file, use the ***decryptFile function*** 
-    1. this requires 1 parmeters: path to a file encypted in Hexidecimal or Base64
+    1. this requires 1 parameters: path to a file encypted in Hexidecimal or Base64
     2. Example use: decryptFile("./encryptedHexFile.txt")
     3. Expect: a new file created
     4. This file is decrypted and decoded. It is in the same state as the source file, containing text (utf8)
