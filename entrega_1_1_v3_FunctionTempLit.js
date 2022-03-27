@@ -26,10 +26,11 @@ console.log(tempLit)
 
 // Nivell 3 - Exercici 1: Crea una matriu de deu funcions i emplena-la mitjançant un bucle de manera que cada funció compti del 0 al 9 per la consola. Invoca cada funció de l'array iterativament. Haurà de mostrar-se per consola el compte del 0 al 9 deu vegades.
 function myCountFunction() { 
-// for(let x = 0; x <= 9; x++){
-//     console.log(x)
-// }
-    return "0,1,2,3,4,5,6,7,8,9."
+let numbers = " "
+for(let x = 0; x <= 9; x++){
+    numbers += x;
+    }
+console.log(numbers)
 }
 function addFunctionsAndDisplay(){
     myNewArray = [];
@@ -37,7 +38,7 @@ function addFunctionsAndDisplay(){
         myNewArray.push(myCountFunction)
     }
     for(let y in myNewArray){
-        console.log((myNewArray[y]()))
+        myNewArray[y]()
     }
 }
 addFunctionsAndDisplay();
