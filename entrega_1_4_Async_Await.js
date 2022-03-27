@@ -16,7 +16,7 @@ let salaries = [{
     id: 1,
     salary: 4000
 }, {
-    id: 22,
+    id: 2,
     salary: 1000
 }, {
     id: 3,
@@ -35,23 +35,21 @@ const getEmployee = (_param) => {
     })
 };
 
-const getSalary = (employeeObj) => {
-    let found = false;
-    for(let x in salaries){
-        if(salaries[x].id === employeeObj.id){
-            found = true;
-            return salaries[x].salary
+const getSalary = (_param) => {
+    return new Promise((resolve, reject) => {
+        for(let x in salaries){
+            if(salaries[x].id === _param.id){
+                resolve (salaries[x].salary)
+            }
         }
-    }
-    if(!found){
-        return (console.log("Salary Id not found. "))
-    }
+        reject (new Error("Salary not found. "))
+    })
 };
 
 const myDelayFunc = () => {
     return new Promise(resolve => {
         setTimeout(() => {
-          resolve('resolved after 2 seconds');
+          resolve('Resolved after 2 seconds. ');
         }, 2000);
     });
 }
@@ -62,8 +60,8 @@ async function findingNameAndSalary () {
     try{
         const printEmployeeName = await getEmployee(employeeId);
         console.log(printEmployeeName.name);
-        const printSalary = getSalary(printEmployeeName);
-        console.log(printSalary); //to fix - undefined when not found 
+        const printSalary = await getSalary(printEmployeeName);
+        console.log(printSalary); 
     } catch (error) {
         console.log(error.message)
     }
@@ -72,8 +70,12 @@ findingNameAndSalary(employeeId);
 
 // N2 Ex1 Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 async function asyFunc2 () {
+    try{
         const messageAfterDelay = await myDelayFunc();
         console.log(messageAfterDelay)
+    }catch (error) {
+        console.log("Error has occured. No message received. ")
+    }
 }
 asyFunc2()
 // N3 Ex1  Captura tots els errors possibles dels nivells 1 i 2.
