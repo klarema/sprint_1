@@ -31,39 +31,78 @@ persona1.dirNom()
 
 
 // Nivell 3 - Exercici 1: una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions
-class Calzado{
-  constructor() {
-    if(this.constructor === Calzado){
-    throw new Error("Calzado is an Abstract Class. Cannot be instantiated. ");
-    }
-  }
-  material(){
-    return "Material: leather and synthetic mix"
-  }
-  tacon(){
-    throw new Error ("method must be implemented. ")
-  }
-  style(){
-    throw new Error ("method must be implemented. ")
-  }
+// class Calzado{
+//   constructor() {
+//     if(this.constructor === Calzado){
+//     throw new Error("Calzado is an Abstract Class. Cannot be instantiated. ");
+//     }
+//   }
+//   material(){
+//     return "Material: leather and synthetic mix"
+//   }
+//   tacon(){
+//     throw new Error ("method must be implemented. ")
+//   }
+//   style(){
+//     throw new Error ("method must be implemented. ")
+//   }
 
-}
-class Botas extends Calzado {
-  tacon(){
-    return "bajo"
-  }
-  style(){
-    return "casual"
-  }
+// }
+// class Botas extends Calzado {
+//   tacon(){
+//     return "bajo"
+//   }
+//   style(){
+//     return "casual"
+//   }
 
+// }
+// class Zapato extends Calzado {
+//   tacon(){
+//     return "alto"
+//   }
+//   style(){
+//     return "formal"
+//   }
+// }
+
+var Calzado = function () {
+  if(this.constructor === Calzado){
+  throw new Error("Calzado is an Abstract Class. Cannot be instantiated. ");
+  }
+};
+Calzado.prototype.material = function () {
+  return "leather and synthetic mix"
 }
-class Zapato extends Calzado {
-  tacon(){
-    return "alto"
-  }
-  style(){
-    return "formal"
-  }
+Calzado.prototype.tacon = function () {
+throw new Error ("method must be implemented. ")
+}
+Calzado.prototype.style = function () {
+throw new Error ("method must be implemented. ")
+}
+
+var Botas = function() {  
+Calzado.apply(this, arguments);  
+};  
+Botas.prototype = Object.create(Calzado.prototype);  
+Botas.prototype.constructor = Botas;  
+Botas.prototype.tacon = function() {  
+return "bajo";  
+}  
+Botas.prototype.style = function() {  
+return "formal or casual" 
+}  
+
+var Zapato = function() {
+Calzado.apply(this, arguments);  
+}
+Zapato.prototype = Object.create(Calzado.prototype);  
+Zapato.prototype.constructor = Zapato;  
+Zapato.prototype.tacon = function() {
+  return "alto";
+}
+Zapato.prototype.style = function() {
+  return "formal";
 }
 
 function createCalzado(objId, ObjectType){
