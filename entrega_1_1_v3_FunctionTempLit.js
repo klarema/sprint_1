@@ -43,6 +43,6 @@ function addFunctionsAndDisplay(){
 addFunctionsAndDisplay();
 
 // Nivell 3 - Exercici 2: Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari rebut com a paràmetre.
-const displayName = function () {
+const displayName = function (nomUsuari) {
     console.log(`(N3Ex2) Funció anònima, autoinvocada: ${nomUsuari}`);
-}();  
+}(nomUsuari);  
