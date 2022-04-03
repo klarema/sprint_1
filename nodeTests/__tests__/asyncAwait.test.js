@@ -1,4 +1,4 @@
-var myAsyncTest = require('../app/async_await_func');
+var myAsyncTest = require('../app/asyncAwait');
 
 test('Employee id found - resolved', () => {
   return expect(myAsyncTest.getEmployee(2)).resolves.toStrictEqual({"id": 2, "name": "Bill Gates"});
