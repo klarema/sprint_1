@@ -1,17 +1,21 @@
-var PersonaA = require('../app/person');
+// var PersonaA = require('../app/person');
 
-test('Person class constructor and method work correctly. ', () => {
+test('Person class constructor works correctly. ', () => {
   const myMock = jest.fn();
-  const mockPerson1 = myMock("John")
-  const mockPerson2 = myMock("Laia")
+  const mockPerson1 = new myMock("John")
+  const mockPerson2 = new myMock("Laia")
   expect(myMock).toHaveBeenCalledTimes(2);
   expect(myMock.mock.instances[1] === "Laia");
-  const person1 = new PersonaA(mockPerson1);
-  const person2 = new PersonaA(mockPerson2);
-  
-  
-  // const showName = person1.dirNom()
-  // expect(showName).toContain("John");
-  
+  // expect(myMock.mock.instances[1] === "ThisShouldFail?");
+  // console.log(myMock.mock.instances[1])
   });
+  
+
+  // test('Person method works correctly. ', () => {
+  //   const myMock = jest.fn();
+  //   const mockPerson3 = new myMock("Tony")
+  //   mockPerson3.dirNom()
+  //   myMock.dirNom()
+  //   // expect something
+  //   });
 
