@@ -1,5 +1,6 @@
 
-module.exports =  class PersonaA {
+// module.exports =  class PersonaA {
+class PersonaA {
     constructor (nom) {
       this.nom = nom;
     }
