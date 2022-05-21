@@ -1,4 +1,8 @@
 module.exports = {};
+// const employees = require("./employees.json");
+// const salaries = require("./salaries.json");
+// const employees = require("../__tests__/employees.json");
+// const salaries = require("./app/salaries.json");
 
 let employees = [{
   id: 1,
