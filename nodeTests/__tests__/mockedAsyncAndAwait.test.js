@@ -1,68 +1,69 @@
-var myAsyncTest = require("../app/mockedAsyncAndAwait");
+var myAsyncTest = require("../app/mockedAsyncAndAwait.js");
 
 describe("Mocked employee and salary json files (Nivell 3)", () => {
-  //   jest.mock(
-  //     "./employees.json",
-  //     () => [
-  //       {
-  //         id: 1,
-  //         name: "Linux Torvalds",
-  //       },
-  //       {
-  //         id: 2,
-  //         name: "Bill Gates",
-  //       },
-  //       {
-  //         id: 3,
-  //         name: "Jeff Bezos",
-  //       },
-  //     ],
-  //     {
-  //       virtual: true,
-  //     }
-  //   );
+  jest.mock(
+    "../app/employee.json",
+    () => [
+      {
+        id: 1,
+        name: "Linux Torvalds",
+      },
+      {
+        id: 2,
+        name: "Bill Gates",
+      },
+      {
+        id: 3,
+        name: "Jeff Bezos",
+      },
+    ],
+    {
+      virtual: true,
+    }
+  );
 
-  //   jest.mock(
-  //     "./salaries.json",
-  //     () => [
-  //       {
-  //         id: 1,
-  //         name: "Linux Torvalds",
-  //       },
-  //       {
-  //         id: 2,
-  //         name: "Bill Gates",
-  //       },
-  //       {
-  //         id: 3,
-  //         name: "Jeff Bezos",
-  //       },
-  //     ],
-  //     {
-  //       virtual: true,
-  //     }
-  //   );
+  jest.mock(
+    "../app/salary.json",
+    () => [
+      {
+        id: 1,
+        name: "Linux Torvalds",
+      },
+      {
+        id: 2,
+        name: "Bill Gates",
+      },
+      {
+        id: 3,
+        name: "Jeff Bezos",
+      },
+    ],
+    {
+      virtual: true,
+    }
+  );
 
-  it.skip("Employee id found - resolved", () => {
-    return expect(
-      myAsyncTest.getEmployee(employees[1].id)
-    ).resolves.toStrictEqual({ id: 2, name: "Bill Gates" });
+  it("Employee id found - resolved", () => {
+    expect(myAsyncTest.getEmployee(2)).resolves.toStrictEqual({
+      id: 2,
+      name: "Bill Gates",
+    });
   });
 
-  it.skip("Employee Salary is returned - resolved", () => {
-    return expect(
-      myAsyncTest.getSalary({ id: 2, name: "Bill Gates" })
-    ).resolves.toBe(1000);
+  it("Employee Salary is returned - resolved", () => {
+    expect(myAsyncTest.getSalary({ id: 2, name: "Bill Gates" })).resolves.toBe(
+      1000
+    );
   });
 
-  it.skip("Invoca funció getEmployee, returns a promise", () => {
-    return myAsyncTest.getEmployee(2).then((employeeDetails) => {
+  it("Invoca funció getEmployee, returns a promise", () => {
+    myAsyncTest.getEmployee(2).then((employeeDetails) => {
       expect(employeeDetails).toStrictEqual({ id: 2, name: "Bill Gates" });
     });
   });
 
-  it.skip("Invoca funció getSalary, returns a promise", () => {
-    return myAsyncTest
+  it("Invoca funció getSalary, returns a promise", () => {
+    myAsyncTest
       .getSalary({ id: 2, name: "Bill Gates" })
       .then((salaryDetails) => {
         expect(salaryDetails).toBe(1000);
