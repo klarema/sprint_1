@@ -1,55 +1,45 @@
 var PersonaA = require("../app/person");
 
-beforeEach(() => {
-  const myMock = jest.fn();
-  //   PersonaA.mockClear();
+const mockPersonA = jest.fn();
+jest.mock("../app/person", () => {
+  return jest.fn().mockImplementation(() => {
+    return { PersonaA: mockPersonA };
+  });
 });
 
-afterEach(() => {});
+const mockDirNom = jest.fn();
+jest.mock("../app/person", () => {
+  return jest.fn().mockImplementation(() => {
+    return { dirNom: mockDirNom };
+  });
+});
 
-describe("N2 Jest Mocks: test the calls to the Person class constructor. (Classes & Arrow Functions - Nivell 2 Exercici 2))", () => {
+describe("N2 Jest Mocks: test the calls to the Person class constructor and method. (Classes & Arrow Functions - Nivell 2 Exercici 2))", () => {
+  beforeEach(() => {
+    PersonaA.mockClear();
+    mockDirNom.mockClear();
+  });
+
   it("Creates a new person instance. ", () => {
-    const myMock = jest.fn();
-    const mockPerson1 = new myMock("John");
-    expect(myMock.mock.instances[0] === "John");
+    const PersonA1 = new PersonaA("John");
+    expect(PersonA1).toBeTruthy();
   });
-  it("Has been called 2 times. ", () => {
-    const myMock = jest.fn();
-    const mockPerson1 = new myMock("John");
-    const mockPerson2 = new myMock("Laia");
-    expect(myMock).toHaveBeenCalledTimes(2);
-  });
-  it("Gets last instance property. ", () => {
-    const myMock = jest.fn();
-    const mockPerson1 = new myMock("Laia");
-    const mockPerson2 = new myMock("Tony");
-    expect(myMock.mock.instances[2] === "Tony");
-  });
-  //   it("Spies on the constructor ", () => {
-  //     jest.mock("../app/person", () => {
-  //       // Works and lets you check for constructor calls:
-  //       return jest.fn().mockImplementation(() => {
-  //         let nom = "Tony";
-  //         return {
-  //           PersonaA: () => {
-  //             // dirNom(() => {
-  //             //   console.log(this.nom);
-  //             // });
-  //           },
-  //         };
-  //       });
-  //     });
-  //     // expect(PersonaA.mock.dirNom.length).toEqual(1);
-  //   });
-});
 
-describe("N2 Jest Mocks: test the calls to the Person class method dirNom(). (Classes & Arrow Functions - Nivell 2 Exercici 2))", () => {
-  //   const getterMethodMock = jest
-  //     .spyOn(PersonaA.prototype, "dirNom")
-  //     .mockImplementation(() => "some-mocked-result");
-  //   it("Spies on the method - custom methods are called", () => {
-  //     const person = new PersonaA();
-  //     const dirNom = person.dirNom;
-  //     expect(getterMethodMock).toHaveBeenCalled();
-  //   });
+  it("Has been called 2 times. ", () => {
+    const PersonA1 = new PersonaA("John");
+    const PersonA2 = new PersonaA("Laia");
+    expect(PersonaA.mock.calls.length).toEqual(2);
+  });
+
+  it("Gets last instance property. ", () => {
+    const PersonA1 = new PersonaA("John");
+    const PersonA2 = new PersonaA("Laia");
+    expect(PersonaA.mock.lastCall[0]).toBe("Laia");
+  });
+
+  it("calls method dirNom. ", () => {
+    const PersonA2 = new PersonaA("Laia");
+    PersonA2.dirNom();
+    expect(mockDirNom.mock.calls.length).toEqual(1);
+  });
 });
